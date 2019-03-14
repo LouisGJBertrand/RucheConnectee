@@ -1,0 +1,44 @@
+{
+    "settings": {
+        "method": "JSONDataBase",
+        "fileName": "Access Database",
+        "creator": "Louis Bertrand",
+        "normeMethod": "PY-0001-JSONDataBase",
+        "MysqlCompatible": true,
+        "encoding": "UTF-8",
+        "isoEncoding": "ISO\/CEI 10646",
+        "headers": [
+            "id",
+            "code",
+            "displayName",
+            "alias"
+        ],
+        "lastUpdated": "2019-02-24T15:15:41+00:00"
+    },
+    "datas": [
+        {
+            "id": 0,
+            "code": 65535,
+            "displayName": "SuperAdmin",
+            "alias": "*"
+        },
+        {
+            "id": 1,
+            "code": 1,
+            "displayName": "Agent de maintenance",
+            "alias": "adm"
+        },
+        {
+            "id": 2,
+            "code": 65280,
+            "displayName": "Intervenant R\u00e9seau",
+            "alias": "ir"
+        },
+        {
+            "id": 3,
+            "code": 16384,
+            "displayName": "Responsable de Vols",
+            "alias": "rdv"
+        }
+    ]
+}

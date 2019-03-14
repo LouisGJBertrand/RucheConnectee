@@ -1,0 +1,22 @@
+{
+    "settings": {
+        "method": "JSONDataBase",
+        "fileName": "Api Keys",
+        "creator": "Louis Bertrand",
+        "normeMethod": "PY-0001-JSONDataBase",
+        "MysqlCompatible": true,
+        "encoding": "UTF-8",
+        "isoEncoding": "ISO\/CEI 10646",
+        "headers": [
+            "key",
+            "type"
+        ],
+        "lastUpdated": "2019-02-24T15:15:41+00:00"
+    },
+    "datas": [
+        {
+            "key": "$2y$10$wjOGT9hXQFrCU.0PIVajcOzvmi3mzB8jIct.UqKCF.kvlAaKOq5QO",
+            "type": 9029
+        }
+    ]
+}

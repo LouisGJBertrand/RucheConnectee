@@ -1,0 +1,37 @@
+0xFxxx => réseau {
+
+    0xFFxx => Intervention réseau {
+
+        0xFFFF => Super Administrateur (tous les droits)
+        0xFF00 => Internenant réseau
+        0xFF01 => Testeur/debuggeur
+        0xFF02 => responsable de Maintenance Réseau
+
+    }
+    0xF1xx => installation
+    0xF0xx => logistique
+
+}
+
+0x4xxx => gestion {
+
+    0x40xx => logistique {
+
+        0x4000 => responsable des vols
+        0x4004 => commandant de bord
+        0x4001 => hote d'accueil passagers
+
+    }
+
+}
+
+0x0xxx => physique {
+
+    0x00xx => logistique {
+
+        0x0002 => Maintenance des Appareils
+        0x0001 => agent de Maintenance (propreté)
+
+    }
+
+}
