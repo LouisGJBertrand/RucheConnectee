@@ -11,18 +11,8 @@
             "id",
             "uid",
             "uuid",
-            "password",
-            "access"
+            "password"
         ],
         "lastUpdated": "2019-02-23T18:29:01+00:00"
-    },
-    "datas": [
-        {
-            "id": 0,
-            "uIdTag": "5ad34a45215e35afb109c54d196bd742",
-            "uIdentifier": "Louis Bertrand",
-            "password": "$2y$10$deowC4d\/JtHKNGGjxXuAxOZl4VxneX1oumG0N69EbKT3cMUm6Zq8K",
-            "access": 65535
-        }
-    ]
+    }
 }

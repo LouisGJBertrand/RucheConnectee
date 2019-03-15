@@ -13,51 +13,111 @@
 
         }
 
-        public function selectEquals(array $array, $key, $value, $test = "==", $max = 0)
+        public function execute(array $file, string $query)
         {
 
-            $keys = array_keys($array);
+            $keys = array_keys($file);
 
-            $result = 0;
-            $a = 0;
-            while ($a < count($array)) {
+            $result = array();
 
-                if ($test === "==") {
-                    if ($array[$keys[$a]][$key] == $value) {
-                        $results[] = $array[$keys[$a]];
-                        $result++;
+            $treatement = explode(" ", $query);
+
+            if ($treatement[0] == "SELECT") {
+
+                if ($treatement[1] == "*") {
+
+                    if ($treatement[2] == "WHERE") {
+
+                        foreach ($file as $key => $value) {
+
+                            if ($treatement[6] == "AND") {
+
+                                if($this->queryTester($value[$treatement[3]], $treatement[5], $treatement[4]) && $this->queryTester($value[$treatement[7]], $treatement[9], $treatement[8])){
+
+                                    $result[] = $value;
+
+                                }
+
+                            }
+
+                            if ($treatement[6] == "OR") {
+
+                                if($this->queryTester($value[$treatement[3]], $treatement[5], $treatement[4]) || $this->queryTester($value[$treatement[7]], $treatement[9], $treatement[8])){
+
+                                    $result[] = $value;
+
+                                }
+
+                            } else {
+
+                                if($this->queryTester($value[$treatement[3]], $treatement[5], $treatement[4])){
+
+                                    $result[] = $value;
+
+                                }
+                            }
+
+                        }
+
                     }
-                }elseif ($test === ">") {
-                    if ($array[$keys[$a]][$key] > $value) {
-                        $results[] = $array[$keys[$a]];
-                        $result++;
-                    }
-                }elseif ($test === ">=") {
-                    if ($array[$keys[$a]][$key] >= $value) {
-                        $results[] = $array[$keys[$a]];
-                        $result++;
-                    }
-                }elseif ($test === "<") {
-                    if ($array[$keys[$a]][$key] < $value) {
-                        $results[] = $array[$keys[$a]];
-                        $result++;
-                    }
-                }elseif ($test === "<=") {
-                    if ($array[$keys[$a]][$key] <= $value) {
-                        $results[] = $array[$keys[$a]];
-                        $result++;
-                    }
+
+                } else {
+
+                    $error[] = "use only *";
+
                 }
-
-                if ($max > 0 && ($max - 1) < $result) {
-                    $a = count($array);
-                }
-
-                $a++;
 
             }
 
-            return $results;
+            return $result;
+
+        }
+
+        public function queryTester($value1, $value2, $comparator)
+        {
+
+            if ($comparator === "==") {
+                if ($value1 == $value2) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } elseif ($comparator === ">=") {
+                if ($value1 >= $value2) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } elseif ($comparator === "<=") {
+                if ($value1 <= $value2) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } elseif ($comparator === ">") {
+                if ($value1 > $value2) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } elseif ($comparator === "<") {
+                if ($value1 < $value2) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+            // WARNING: NOT A STANDARD TEST
+            //          DO NOT USE IN NORMAL TESTS
+            elseif ($comparator === "#=") {
+                if (password_verify($value1,$value2)) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } else {
+                return false;
+            }
 
         }
 

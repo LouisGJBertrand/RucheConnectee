@@ -4,9 +4,11 @@
 
     $users = $dbJson->get("DB/users.json");
     $apiKeys = $dbJson->get("DB/apiKeys.json");
+    $weight = $dbJson->get("DB/weight.json");
 
     // print_r($users);
 
+    header('Content-Type: application/json');
     header('Content-Disposition:inline; filename="EasyFly API";');
 
     $get = $_GET;
@@ -22,7 +24,7 @@
 
                 if (isset($get['uuid'])) {
 
-                    $search = $dbJson->selectEquals($users["datas"], "uIdTag", $get['uuid'], "==", 1);
+                    $search = $dbJson->execute($users["datas"], "SELECT * WHERE uIdTag == ".$get['uuid']);
                     $result["value"] = $search[0]["uIdentifier"];
                     $result["trace"]["action"] = $get['action'];
                     $result["trace"]["uuid"] = $get['uuid'];
@@ -36,7 +38,7 @@
 
                 if (isset($get['uuid'])) {
 
-                    $search = $dbJson->selectEquals($users["datas"], "uIdTag", $get['uuid'], "==", 1);
+                    $search = $dbJson->execute($users["datas"], "SELECT * WHERE uIdTag == ".$get['uuid']);
                     $result["value"] = $search[0]["access"];
                     $result["trace"]["action"] = $get['action'];
                     $result["trace"]["uuid"] = $get['uuid'];
@@ -50,7 +52,7 @@
 
                 if (isset($get['uuid'])) {
 
-                    $search = $dbJson->selectEquals($users["datas"], "uIdTag", $get['uuid'], "==", 1);
+                    $search = $dbJson->execute($users["datas"], "SELECT * WHERE uIdTag == ".$get['uuid']);
                     $result["value"]["id"] = $search[0]["id"];
                     $result["value"]["uIdentifier"] = $search[0]["uIdentifier"];
                     $result["value"]["access"] = $search[0]["access"];
@@ -66,13 +68,13 @@
 
                 if (isset($get['uuid']) && isset($get["password"])) {
 
-                    $search = $dbJson->selectEquals($users["datas"], "uIdTag", $get['uuid'], "==", 1);
+                    $search = $dbJson->execute($users["datas"], "SELECT * WHERE uIdTag == ".$get['uuid']);
                     $file = $dbJson->get("DB/users.json");
 
                     if ( password_verify($get["password"], $search[0]["password"])) {
 
                         $result["value"] = true;
-                        $file["datas"][0]["password"] = password_hash($get["password"], PASSWORD_BCRYPT);
+                        $file["datas"][$search[0]["id"]]["password"] = password_hash($get["password"], PASSWORD_BCRYPT);
                         $dbJson->updateFile($file, "DB/users.json");
 
                     } else {
@@ -93,7 +95,7 @@
 
                 if (isset($get['uuid']) && isset($get["oldPassword"]) && isset($get["newPassword"])) {
 
-                    $search = $dbJson->selectEquals($users["datas"], "uIdTag", $get['uuid'], "==", 1);
+                    $search = $dbJson->execute($users["datas"], "SELECT * WHERE uIdTag == ".$get['uuid']);
                     $file = $dbJson->get("DB/users.json");
 
                     if ( password_verify($get["password"], $search[0]["password"])) {
@@ -122,7 +124,8 @@
 
                 if (isset($get['prkey']) && isset($get["regis"])) {
 
-                    $search = $dbJson->selectEquals($apiKeys["datas"], "type", 0x2345, "==");
+                    $access = 0x2345;
+                    $search = $dbJson->execute($apiKeys["datas"], "SELECT * WHERE access == ".$access);
                     $file = $dbJson->get("DB/apiKeys.json");
 
                     // print_r($search)."\n";
@@ -152,6 +155,43 @@
 
                 }
 
+            }
+            //  [USAGE]
+            //  <action> => "registerDataWeight" & <prkey> => %prkey% & <data> => %data%
+            //  regis = new apiKey to register
+            //  access Level = access Level for the key, base value = 0x1457
+            elseif ($get['action'] == "registerDataWeight") {
+
+                if (isset($get['prkey']) && isset($get["data"])) {
+
+                    $access = 0x1457;
+                    $search = $dbJson->execute($apiKeys["datas"], "SELECT * WHERE access == ".$access);
+                    $file = $dbJson->get("DB/apiKeys.json");
+
+                    // print_r($search)."\n";
+
+                    $verified = false;
+
+                    foreach ($search as $key => $val) {
+
+                        if (password_verify($get["prkey"], $search[$key]["key"]) && !$verified) {
+
+                            $verified = $result["value"] = "New Key Registered as ".$get["regis"];
+
+                            $file["datas"][0]["key"] = password_hash($get["prkey"], PASSWORD_BCRYPT);
+                            $file["datas"][count($apiKeys["datas"])]["key"] = password_hash($get["regis"], PASSWORD_BCRYPT);
+                            $file["datas"][count($apiKeys["datas"])]["type"] = $get["type"];
+                            $dbJson->updateFile($file, "DB/apiKeys.json");
+                        } elseif(!password_verify($get["prkey"], $search[$key]["key"]) && !$verified) {
+                            $result["value"] = false;
+                        }
+
+                    }
+                    $result["trace"]["action"] = $get['action'];
+                    $result["trace"]["uuid"] = $get['uuid'];
+
+                }
+
             } else {
                 $result["value"] = "API VERSION: V1.0.0";
             }
@@ -165,5 +205,4 @@
     }
     $result["trace"]["time"] = date("c", time());
     $result["trace"]["id"] = md5(time().rand(0, 100));
-    header('Content-Type: application/json');
     echo json_encode($result, JSON_PRETTY_PRINT);
