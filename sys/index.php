@@ -17,7 +17,7 @@
         $get["password"] = $_SESSION["CONN_Upassword"];
 
 
-        $apiRequest = "$apiUrl/?action=userTestConnection&uuid=%uuid%&password=%password%";
+        $apiRequest = "$apiUrl/?action=userTestConnection&uuid=%uuid%&pass=%password%";
         $apiRequest = str_replace("%uuid%", $get["uuid"], $apiRequest);
         $apiRequest = str_replace("%password%", $get["password"], $apiRequest);
         $apiResponse = json_decode(file_get_contents($apiRequest), true);
