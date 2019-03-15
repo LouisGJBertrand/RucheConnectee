@@ -63,15 +63,15 @@
 
             }
             //  [USAGE]
-            //  <action> => "userTestConnection" & <uuid> => %uuid% & <password> => %password%
+            //  <action> => "userTestConnection" & <uuid> => %uuid% & <pass> => %password%
             elseif ($get['action'] == "userTestConnection") {
 
-                if (isset($get['uuid']) && isset($get["password"])) {
+                if (isset($get['uuid']) && isset($get["pass"])) {
 
                     $search = $dbJson->execute($users["datas"], "SELECT * WHERE uIdTag == ".$get['uuid']);
                     $file = $dbJson->get("DB/users.json");
 
-                    if ( password_verify($get["password"], $search[0]["password"])) {
+                    if (password_verify($get["password"], $search[0]["password"])) {
 
                         $result["value"] = true;
                         $file["datas"][$search[0]["id"]]["password"] = password_hash($get["password"], PASSWORD_BCRYPT);
