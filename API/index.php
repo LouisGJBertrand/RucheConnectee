@@ -71,10 +71,10 @@
                     $search = $dbJson->execute($users["datas"], "SELECT * WHERE uIdTag == ".$get['uuid']);
                     $file = $dbJson->get("DB/users.json");
 
-                    if (password_verify($get["password"], $search[0]["password"])) {
+                    if (password_verify($get["pass"], $search[0]["password"])) {
 
                         $result["value"] = true;
-                        $file["datas"][$search[0]["id"]]["password"] = password_hash($get["password"], PASSWORD_BCRYPT);
+                        $file["datas"][$search[0]["id"]]["password"] = password_hash($get["pass"], PASSWORD_BCRYPT);
                         $dbJson->updateFile($file, "DB/users.json");
 
                     } else {
