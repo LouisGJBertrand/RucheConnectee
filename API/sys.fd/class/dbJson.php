@@ -13,63 +13,72 @@
 
         }
 
-        public function execute(array $file, string $query)
+        public function execute(array $file, $query)
         {
 
-            $keys = array_keys($file);
+            if(is_string($query)){
 
-            $result = array();
+                $keys = array_keys($file);
 
-            $treatement = explode(" ", $query);
+                $result = array();
 
-            if ($treatement[0] == "SELECT") {
+                $treatement = explode(" ", $query);
 
-                if ($treatement[1] == "*") {
+                if ($treatement[0] == "SELECT") {
 
-                    if ($treatement[2] == "WHERE") {
+                    if ($treatement[1] == "*") {
 
-                        foreach ($file as $key => $value) {
+                        if ($treatement[2] == "WHERE") {
 
-                            if ($treatement[6] == "AND") {
+                            foreach ($file as $key => $value) {
 
-                                if($this->queryTester($value[$treatement[3]], $treatement[5], $treatement[4]) && $this->queryTester($value[$treatement[7]], $treatement[9], $treatement[8])){
+                                if ($treatement[6] == "AND") {
 
-                                    $result[] = $value;
+                                    if($this->queryTester($value[$treatement[3]], $treatement[5], $treatement[4]) && $this->queryTester($value[$treatement[7]], $treatement[9], $treatement[8])){
 
-                                }
+                                        $result[] = $value;
 
-                            }
-
-                            if ($treatement[6] == "OR") {
-
-                                if($this->queryTester($value[$treatement[3]], $treatement[5], $treatement[4]) || $this->queryTester($value[$treatement[7]], $treatement[9], $treatement[8])){
-
-                                    $result[] = $value;
+                                    }
 
                                 }
 
-                            } else {
+                                if ($treatement[6] == "OR") {
 
-                                if($this->queryTester($value[$treatement[3]], $treatement[5], $treatement[4])){
+                                    if($this->queryTester($value[$treatement[3]], $treatement[5], $treatement[4]) || $this->queryTester($value[$treatement[7]], $treatement[9], $treatement[8])){
 
-                                    $result[] = $value;
+                                        $result[] = $value;
 
+                                    }
+
+                                } else {
+
+                                    if($this->queryTester($value[$treatement[3]], $treatement[5], $treatement[4])){
+
+                                        $result[] = $value;
+
+                                    }
                                 }
+
                             }
 
                         }
 
+                    } else {
+
+                        $error[] = "use only *";
+
                     }
-
-                } else {
-
-                    $error[] = "use only *";
 
                 }
 
-            }
+                return $result;
 
-            return $result;
+            }
+            else {
+
+                return "FATAL ERROR: NOT A STRING GIVEN FOR QUERY";
+
+            }
 
         }
 
