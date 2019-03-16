@@ -61,6 +61,10 @@
 
                             }
 
+                        } else {
+
+                            $error[] = "use WHERE";
+
                         }
 
                     } else {
@@ -69,10 +73,14 @@
 
                     }
 
+                
                 }
 
-                return $result;
+                elseif ($treatement[0] == "INSERT") {
 
+                    return false;
+
+                }
             }
             else {
 
