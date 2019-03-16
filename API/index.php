@@ -24,7 +24,7 @@
 
                 if (isset($get['uuid'])) {
 
-                    $search = $dbJson->execute($users["datas"], "SELECT * WHERE uIdTag == ".$get['uuid']);
+                    $search = $dbJson->execute("SELECT * from Users_Database WHERE uIdTag == ".$get['uuid']);
                     $result["value"] = $search[0]["uIdentifier"];
                     $result["trace"]["action"] = $get['action'];
                     $result["trace"]["uuid"] = $get['uuid'];
@@ -38,7 +38,7 @@
 
                 if (isset($get['uuid'])) {
 
-                    $search = $dbJson->execute($users["datas"], "SELECT * WHERE uIdTag == ".$get['uuid']);
+                    $search = $dbJson->execute("SELECT * from Users_Database WHERE uIdTag == ".$get['uuid']);
                     $result["value"] = $search[0]["access"];
                     $result["trace"]["action"] = $get['action'];
                     $result["trace"]["uuid"] = $get['uuid'];
@@ -52,7 +52,7 @@
 
                 if (isset($get['uuid'])) {
 
-                    $search = $dbJson->execute($users["datas"], "SELECT * WHERE uIdTag == ".$get['uuid']);
+                    $search = $dbJson->execute("SELECT * from Users_Database WHERE uIdTag == ".$get['uuid']);
                     $result["value"]["id"] = $search[0]["id"];
                     $result["value"]["uIdentifier"] = $search[0]["uIdentifier"];
                     $result["value"]["access"] = $search[0]["access"];
@@ -68,7 +68,7 @@
 
                 if (isset($get['uuid']) && isset($get["pass"])) {
 
-                    $search = $dbJson->execute($users["datas"], "SELECT * WHERE uIdTag == ".$get['uuid']);
+                    $search = $dbJson->execute("SELECT * from Users_Database WHERE uIdTag == ".$get['uuid']);
                     $file = $dbJson->get("DB/users.json");
 
                     if (password_verify($get["pass"], $search[0]["password"])) {
@@ -95,7 +95,7 @@
 
                 if (isset($get['uuid']) && isset($get["oldPassword"]) && isset($get["newPassword"])) {
 
-                    $search = $dbJson->execute($users["datas"], "SELECT * WHERE uIdTag == ".$get['uuid']);
+                    $search = $dbJson->execute("SELECT * from Users_Database WHERE uIdTag == ".$get['uuid']);
                     $file = $dbJson->get("DB/users.json");
 
                     if ( password_verify($get["password"], $search[0]["password"])) {
@@ -125,7 +125,7 @@
                 if (isset($get['prkey']) && isset($get["regis"])) {
 
                     $access = 0x2345;
-                    $search = $dbJson->execute($apiKeys["datas"], "SELECT * WHERE access == ".$access);
+                    $search = $dbJson->execute("SELECT * from Api_Keys WHERE access == ".$access);
                     $file = $dbJson->get("DB/apiKeys.json");
 
                     // print_r($search)."\n";
@@ -165,28 +165,11 @@
                 if (isset($get['prkey']) && isset($get["data"])) {
 
                     $access = 0x1457;
-                    $search = $dbJson->execute($apiKeys["datas"], "SELECT * WHERE access == ".$access);
+                    $search = $dbJson->execute("SELECT * from Api_Keys WHERE access == ".$access);
                     $file = $dbJson->get("DB/apiKeys.json");
 
                     // print_r($search)."\n";
 
-                    $verified = false;
-
-                    foreach ($search as $key => $val) {
-
-                        if (password_verify($get["prkey"], $search[$key]["key"]) && !$verified) {
-
-                            $verified = $result["value"] = "New Key Registered as ".$get["regis"];
-
-                            $file["datas"][0]["key"] = password_hash($get["prkey"], PASSWORD_BCRYPT);
-                            $file["datas"][count($apiKeys["datas"])]["key"] = password_hash($get["regis"], PASSWORD_BCRYPT);
-                            $file["datas"][count($apiKeys["datas"])]["type"] = $get["type"];
-                            $dbJson->updateFile($file, "DB/apiKeys.json");
-                        } elseif(!password_verify($get["prkey"], $search[$key]["key"]) && !$verified) {
-                            $result["value"] = false;
-                        }
-
-                    }
                     $result["trace"]["action"] = $get['action'];
                     $result["trace"]["uuid"] = $get['uuid'];
 

@@ -1,7 +1,30 @@
 <?php
 
-    class dbJson
+    class dbJson extends console
     {
+
+        public function __construct($DB_PATH, $FILES = "*") {
+
+            $this->DB_PATH = $DB_PATH;
+
+            if ($FILES == "*"){
+
+                $FILES = scandir($DB_PATH);
+
+            }
+
+            foreach ($FILES as $key => $value) {
+
+                if (strpos($value, ".json")) {
+                    $step1 = $this->get($this->DB_PATH."/".$value);
+                    $DB_FILES[$step1["settings"]["fileName"]] = $step1["datas"];
+                }
+
+            }
+
+            $this->DB_FILES = $DB_FILES;
+
+        }
 
         public function get($path) {
 
@@ -13,12 +36,10 @@
 
         }
 
-        public function execute(array $file, $query)
+        public function execute($query)
         {
 
             if(is_string($query)){
-
-                $keys = array_keys($file);
 
                 $result = array();
 
@@ -28,13 +49,27 @@
 
                     if ($treatement[1] == "*") {
 
-                        if ($treatement[2] == "WHERE") {
+                        if ($treatement[2] == "from") {
+
+                            if (isset($this->DB_FILES[$treatement[3]])) {
+
+                                $file = $this->DB_FILES[$treatement[3]];
+
+                            } else {
+
+                                return "FATAL ERROR: THIS DATABASE DOES NOT EXISTS";
+
+                            }
+
+                        }
+
+                        if ($treatement[4] == "WHERE") {
 
                             foreach ($file as $key => $value) {
 
-                                if ($treatement[6] == "AND") {
+                                if ($treatement[8] == "AND") {
 
-                                    if($this->queryTester($value[$treatement[3]], $treatement[5], $treatement[4]) && $this->queryTester($value[$treatement[7]], $treatement[9], $treatement[8])){
+                                    if($this->queryTester($value[$treatement[5]], $treatement[7], $treatement[6]) && $this->queryTester($value[$treatement[9]], $treatement[11], $treatement[10])){
 
                                         $result[] = $value;
 
@@ -44,7 +79,7 @@
 
                                 if ($treatement[6] == "OR") {
 
-                                    if($this->queryTester($value[$treatement[3]], $treatement[5], $treatement[4]) || $this->queryTester($value[$treatement[7]], $treatement[9], $treatement[8])){
+                                    if($this->queryTester($value[$treatement[5]], $treatement[7], $treatement[6]) || $this->queryTester($value[$treatement[9]], $treatement[11], $treatement[10])){
 
                                         $result[] = $value;
 
@@ -52,7 +87,7 @@
 
                                 } else {
 
-                                    if($this->queryTester($value[$treatement[3]], $treatement[5], $treatement[4])){
+                                    if($this->queryTester($value[$treatement[5]], $treatement[7], $treatement[6])){
 
                                         $result[] = $value;
 
@@ -61,19 +96,29 @@
 
                             }
 
-                        } else {
+                            return $result;
+                        } 
+                        elseif(!isset($treatement[4])){
 
-                            $error[] = "use WHERE";
+                            return $file;
+
+                        }
+                        else {
+
+                            $error[] = "FATAL ERROR: MISSING ARGUMENTS AT WORD POSITION 5 (MUST BE WHERE OR NOTHING)";
 
                         }
 
                     } else {
 
-                        $error[] = "use only *";
+                        $error[] = "FATAL ERROR: MISSING ARGUMENTS AT WORD POSITION 2 (MUST BE *)";
 
                     }
 
-                
+                    if (is_array($error)) {
+                        return $error;
+                    }
+
                 }
 
                 elseif ($treatement[0] == "INSERT") {

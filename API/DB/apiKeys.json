@@ -1,7 +1,7 @@
 {
     "settings": {
         "method": "JSONDataBase",
-        "fileName": "Api Keys",
+        "fileName": "Api_Keys",
         "creator": "Louis Bertrand",
         "normeMethod": "PY-0001-JSONDataBase",
         "MysqlCompatible": true,

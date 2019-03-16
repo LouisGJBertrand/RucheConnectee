@@ -1,7 +1,7 @@
 {
     "settings": {
         "method": "JSONDataBase",
-        "fileName": "Users Database",
+        "fileName": "Users_Database",
         "creator": "Louis Bertrand",
         "normeMethod": "PY-0001-JSONDataBase",
         "MysqlCompatible": true,
@@ -21,7 +21,7 @@
             "id": 0,
             "uIdTag": "5ad34a45215e35afb109c54d196bd742",
             "uIdentifier": "Louis Bertrand",
-            "password": "$2y$10$deowC4d\/JtHKNGGjxXuAxOZl4VxneX1oumG0N69EbKT3cMUm6Zq8K",
+            "password": "$2y$10$afoNw5Gmi4ZSWwj1s6sU3OomKtszqwRhfsihPQHU.9CEMcrzdl\/5y",
             "access": 65535
         }
     ]
