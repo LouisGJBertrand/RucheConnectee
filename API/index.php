@@ -164,11 +164,12 @@
 
                 if (isset($get['prkey']) && isset($get["data"])) {
 
-                    $access = 0x1457;
-                    $search = $dbJson->execute("SELECT * from Api_Keys WHERE access == ".$access);
-                    $file = $dbJson->get("DB/apiKeys.json");
+                    $access = 0x2345;
+                    $search = $dbJson->execute("SELECT * from Api_Keys WHERE type == ".$access." AND key p= ".$get['prkey']);
 
-                    // print_r($search)."\n";
+                    print_r($search);
+
+                    // $search = $dbJson->execute("INSERT INTO Weight_Database (id, date, uuid, value) VALUES (NULL, ".$dateCtl->dateSimplifier().", ".$get['prkey'].", ".$get["data"]);
 
                     $result["trace"]["action"] = $get['action'];
                     $result["trace"]["uuid"] = $get['uuid'];

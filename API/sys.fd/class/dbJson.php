@@ -17,12 +17,14 @@
 
                 if (strpos($value, ".json")) {
                     $step1 = $this->get($this->DB_PATH."/".$value);
+                    $DB_FILES_PATHS[$step1["settings"]["fileName"]] = $this->DB_PATH."/".$value;
                     $DB_FILES[$step1["settings"]["fileName"]] = $step1["datas"];
                 }
 
             }
 
             $this->DB_FILES = $DB_FILES;
+            $this->DB_FILES_PATHS = $DB_FILES_PATHS;
 
         }
 
@@ -69,15 +71,13 @@
 
                                 if ($treatement[8] == "AND") {
 
-                                    if($this->queryTester($value[$treatement[5]], $treatement[7], $treatement[6]) && $this->queryTester($value[$treatement[9]], $treatement[11], $treatement[10])){
+                                    if($this->queryTester($value[$treatement[5]], $treatement[7], $treatement[6]) && $this->queryTester($treatement[11], $value[$treatement[9]], $treatement[10])){
 
                                         $result[] = $value;
 
                                     }
 
-                                }
-
-                                if ($treatement[6] == "OR") {
+                                } elseif ($treatement[6] == "OR") {
 
                                     if($this->queryTester($value[$treatement[5]], $treatement[7], $treatement[6]) || $this->queryTester($value[$treatement[9]], $treatement[11], $treatement[10])){
 
@@ -123,7 +123,36 @@
 
                 elseif ($treatement[0] == "INSERT") {
 
-                    return false;
+                    if ($treatement[1] == "INTO") {
+
+                        $file = $this->DB_FILES[$treatement[2]];
+                        $colomns = explode(" ", str_replace(",", "", str_replace("(", "", str_replace(")", "", $treatement[3]))));
+
+                        if ($treatement[4] == "VALUES") {
+
+                            $values = explode(" ", str_replace(",", "", str_replace("(", "", str_replace(")", "", $treatement[5]))));
+
+                        } else {
+
+                            return "FATAL ERROR: MISSING VALUES";
+
+                        }
+
+                    } else {
+
+                        return "FATAL ERROR: MISSING INTO";
+
+                    }
+
+                    foreach ($colomns as $key => $val) {
+
+                        $inserts[$val] = $values[$key];
+
+                    }
+
+                    $file["datas"][] = $inserts;
+
+                    return $this->updateFile($file, $this->DB_FILES_PATHS[$treatement[2]]);
 
                 }
             }
@@ -171,7 +200,7 @@
             }
             // WARNING: NOT A STANDARD TEST
             //          DO NOT USE IN NORMAL TESTS
-            elseif ($comparator === "#=") {
+            elseif ($comparator === "p=") {
                 if (password_verify($value1,$value2)) {
                     return true;
                 } else {
@@ -188,9 +217,11 @@
 
             if (is_string($path)) {
 
-                file_put_contents($path, json_encode($array, JSON_PRETTY_PRINT));
+                return file_put_contents($path, json_encode($array, JSON_PRETTY_PRINT));
 
             }
+
+            return false;
 
         }
 
