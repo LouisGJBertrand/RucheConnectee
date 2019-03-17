@@ -3,7 +3,7 @@
         "method": "JSONDataBase",
         "fileName": "Weight_Database",
         "creator": "Louis Bertrand",
-        "normeMethod": "PY-0001-JSONDataBase",
+        "standarsMethod": "PY-0001-JSONDataBase",
         "MysqlCompatible": true,
         "encoding": "UTF-8",
         "isoEncoding": "ISO\/CEI 10646",
