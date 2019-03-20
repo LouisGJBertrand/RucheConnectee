@@ -120,7 +120,7 @@
                     }
 
                 }
-
+                // INSERT METHOD
                 elseif ($treatement[0] == "INSERT") {
 
                     if ($treatement[1] == "INTO") {
