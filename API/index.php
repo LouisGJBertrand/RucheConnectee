@@ -68,13 +68,13 @@
 
                 if (isset($get['uuid']) && isset($get["pass"])) {
 
-                    $search = $dbJson->execute("SELECT * from Users_Database WHERE uIdTag == ".$get['uuid']);
+                    $search = $dbJson->execute("SELECT * from Users_Database WHERE uIdTag == ".$get['uuid']." AND password p= ".$get['pass']);
                     $file = $dbJson->get("DB/users.json");
 
                     if (password_verify($get["pass"], $search[0]["password"])) {
 
                         $result["value"] = true;
-                        $file["datas"][$search[0]["id"]]["password"] = password_hash($get["pass"], PASSWORD_BCRYPT);
+                        $file[$search[0]["id"]]["password"] = password_hash($get["pass"], PASSWORD_BCRYPT);
                         $dbJson->updateFile($file, "DB/users.json");
 
                     } else {
@@ -95,13 +95,13 @@
 
                 if (isset($get['uuid']) && isset($get["oldPassword"]) && isset($get["newPassword"])) {
 
-                    $search = $dbJson->execute("SELECT * from Users_Database WHERE uIdTag == ".$get['uuid']);
+                    $search = $dbJson->execute("SELECT * from Users_Database WHERE uIdTag == ".$get['uuid']." AND password p= ".$get['pass']);
                     $file = $dbJson->get("DB/users.json");
 
                     if ( password_verify($get["password"], $search[0]["password"])) {
 
                         $result["value"] = true;
-                        $file["datas"][0]["password"] = $get["newPassword"];
+                        $file[$search[0]["id"]]["password"] = $get["newPassword"];
                         $dbJson->updateFile($file, "DB/users.json");
 
                     } else {
@@ -164,13 +164,23 @@
 
                 if (isset($get['prkey']) && isset($get["data"])) {
 
+                    $search = array( );
                     $access = 0x2345;
+                    // private key searching
                     $search = $dbJson->execute("SELECT * from Api_Keys WHERE type == ".$access." AND key p= ".$get['prkey']);
 
-                    print_r($search);
-
-                    // $search = $dbJson->execute("INSERT INTO Weight_Database (id, date, uuid, value) VALUES (NULL, ".$dateCtl->dateSimplifier().", ".$get['prkey'].", ".$get["data"]);
-
+                    // private key testing
+                    if ($search != array( )) {
+                        // Database Writing
+                        $get["data"] = str_replace(" ", "_", $get["data"]);
+                        $get["data"] = str_replace(",", ";", $get["data"]);
+                        $search = $dbJson->execute("INSERT INTO Weight_Database (id,date,uuid,value) VALUES (NULL,".$dateCtl->dateSimplifier().",".password_hash($get['prkey'], PASSWORD_DEFAULT).",".$get["data"].")");
+                        $result["value"] = $search;
+                    } else {
+                        // return a FATAL ERROR
+                        $result["value"] = "FATAL ERROR: NO KEY FOUND WITH ".$get['prkey'];
+                    }
+                    
                     $result["trace"]["action"] = $get['action'];
                     $result["trace"]["uuid"] = $get['uuid'];
 

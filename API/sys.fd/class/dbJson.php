@@ -125,12 +125,22 @@
 
                     if ($treatement[1] == "INTO") {
 
-                        $file = $this->DB_FILES[$treatement[2]];
-                        $colomns = explode(" ", str_replace(",", "", str_replace("(", "", str_replace(")", "", $treatement[3]))));
+                        if (isset($this->DB_FILES[$treatement[2]])) {
+
+                            $file = $this->DB_FILES[$treatement[2]];
+
+                        } else {
+
+                            print_r($this->DB_FILES);
+                            return "FATAL ERROR: THIS DATABASE DOES NOT EXISTS";
+
+                        }
+
+                        $colomns = explode(" ", str_replace(",", " ", str_replace("(", "", str_replace(")", "", $treatement[3]))));
 
                         if ($treatement[4] == "VALUES") {
 
-                            $values = explode(" ", str_replace(",", "", str_replace("(", "", str_replace(")", "", $treatement[5]))));
+                            $values = explode(" ", str_replace(",", " ", str_replace("(", "", str_replace(")", "", $treatement[5]))));
 
                         } else {
 
@@ -146,13 +156,17 @@
 
                     foreach ($colomns as $key => $val) {
 
+                        if ($values[$key] == "NULL") {
+                            $values[$key] = count($file);
+                        }
                         $inserts[$val] = $values[$key];
 
                     }
 
-                    $file["datas"][] = $inserts;
+                    $file[] = $inserts;
 
                     return $this->updateFile($file, $this->DB_FILES_PATHS[$treatement[2]]);
+                    // return $file;
 
                 }
             }
@@ -215,13 +229,23 @@
         public function updateFile(array $array, $path)
         {
 
+            $file = json_decode(file_get_contents( $path) , true );
+
+            $newfile["settings"] = $file["settings"];
+            $newfile["settings"]["lastUpdated"] = date("c");
+            $newfile["datas"] = $array;
+
+            // print_r($newfile);
+
+            // return false;
+
             if (is_string($path)) {
 
-                return file_put_contents($path, json_encode($array, JSON_PRETTY_PRINT));
+                return (bool) file_put_contents($path, json_encode($newfile, JSON_PRETTY_PRINT)) . " : Success";
 
             }
 
-            return false;
+            return false . " : Failure";
 
         }
 
