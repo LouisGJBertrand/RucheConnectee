@@ -165,7 +165,7 @@
                 if (isset($get['prkey']) && isset($get["data"])) {
 
                     $search = array( );
-                    $access = 0x2345;
+                    $access = 0x1457;
                     // private key searching
                     $search = $dbJson->execute("SELECT * from Api_Keys WHERE type == ".$access." AND key p= ".$get['prkey']);
 
@@ -175,6 +175,39 @@
                         $get["data"] = str_replace(" ", "_", $get["data"]);
                         $get["data"] = str_replace(",", ";", $get["data"]);
                         $search = $dbJson->execute("INSERT INTO Weight_Database (id,date,uuid,value) VALUES (NULL,".$dateCtl->dateSimplifier().",".password_hash($get['prkey'], PASSWORD_DEFAULT).",".$get["data"].")");
+                        $result["value"] = $search;
+                    } else {
+                        // return a FATAL ERROR
+                        $result["value"] = "FATAL ERROR: NO KEY FOUND WITH ".$get['prkey'];
+                    }
+                    
+                    $result["trace"]["action"] = $get['action'];
+                    $result["trace"]["uuid"] = $get['uuid'];
+
+                }
+
+            }
+            //  [USAGE]
+            //  <action> => "getDataWeight" & <prkey> => %prkey% & <max> => %max|null%
+            //  access Level = access Level for the key, base value = 0x1457
+            elseif ($get['action'] == "getDataWeight") {
+
+                if (isset($get['prkey'])) {
+
+                    $search = array( );
+                    $access = 0x1457;
+                    // private key searching
+                    $search = $dbJson->execute("SELECT * from Api_Keys WHERE type == ".$access." AND key p= ".$get['prkey']);
+
+                    // private key testing
+                    if ($search != array( )) {
+                        // Database searching
+                        if ($get["max"]) {
+                            $suffix = " MAX ".$get["max"];
+                        } else {
+                            $suffix = "";
+                        }
+                        $search = $dbJson->execute("SELECT * from Weight_Database".$suffix);
                         $result["value"] = $search;
                     } else {
                         // return a FATAL ERROR

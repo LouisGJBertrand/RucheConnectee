@@ -17,4 +17,4 @@
     echo $pass."\r\n";
     // b2f8b98c04e5d02ace9ff62726e857e720398c93
     echo password_hash($pass, PASSWORD_BCRYPT)."\r\n";
-    echo dechex(0x1457);
+    echo hexdec(1457);

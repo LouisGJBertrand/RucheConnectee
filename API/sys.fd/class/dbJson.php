@@ -64,41 +64,91 @@
                             }
 
                         }
+                        if ($treatement[count($treatement)-2] == "MAX") {
 
+                            $max = intval($treatement[count($treatement)-1]);
+
+                        }
                         if ($treatement[4] == "WHERE") {
 
+                            $a = 0;
                             foreach ($file as $key => $value) {
 
-                                if ($treatement[8] == "AND") {
+                                if(is_null($max)){
 
-                                    if($this->queryTester($value[$treatement[5]], $treatement[7], $treatement[6]) && $this->queryTester($treatement[11], $value[$treatement[9]], $treatement[10])){
+                                    if ($treatement[8] == "AND") {
 
-                                        $result[] = $value;
+                                        if($this->queryTester($value[$treatement[5]], $treatement[7], $treatement[6]) && $this->queryTester($treatement[11], $value[$treatement[9]], $treatement[10])){
 
+                                            $result[] = $value;
+
+                                        }
+
+                                    } elseif ($treatement[6] == "OR") {
+
+                                        if($this->queryTester($value[$treatement[5]], $treatement[7], $treatement[6]) || $this->queryTester($value[$treatement[9]], $treatement[11], $treatement[10])){
+
+                                            $result[] = $value;
+
+                                        }
+
+                                    } else {
+
+                                        if($this->queryTester($value[$treatement[5]], $treatement[7], $treatement[6])){
+
+                                            $result[] = $value;
+
+                                        }
                                     }
 
-                                } elseif ($treatement[6] == "OR") {
+                                } elseif($a < $max) {
 
-                                    if($this->queryTester($value[$treatement[5]], $treatement[7], $treatement[6]) || $this->queryTester($value[$treatement[9]], $treatement[11], $treatement[10])){
+                                    if ($treatement[8] == "AND") {
 
-                                        $result[] = $value;
+                                        if($this->queryTester($value[$treatement[5]], $treatement[7], $treatement[6]) && $this->queryTester($treatement[11], $value[$treatement[9]], $treatement[10])){
 
+                                            $result[] = $value;
+
+                                        }
+
+                                    } elseif ($treatement[6] == "OR") {
+
+                                        if($this->queryTester($value[$treatement[5]], $treatement[7], $treatement[6]) || $this->queryTester($value[$treatement[9]], $treatement[11], $treatement[10])){
+
+                                            $result[] = $value;
+
+                                        }
+
+                                    } else {
+
+                                        if($this->queryTester($value[$treatement[5]], $treatement[7], $treatement[6])){
+
+                                            $result[] = $value;
+
+                                        }
                                     }
-
-                                } else {
-
-                                    if($this->queryTester($value[$treatement[5]], $treatement[7], $treatement[6])){
-
-                                        $result[] = $value;
-
-                                    }
+                                    $a++;
                                 }
-
                             }
 
                             return $result;
-                        } 
-                        elseif(!isset($treatement[4])){
+
+                        } elseif ($treatement[4] == "MAX"){
+
+                            $a = 0;
+                            foreach($file as $key => $value){
+
+                                if ($a < $max) {
+                                    
+                                    $return[] = $value;
+                                    $a ++;
+
+                                }
+
+                            }
+                            return $return;
+
+                        } elseif (!isset($treatement[4])){
 
                             return $file;
 
@@ -241,7 +291,11 @@
 
             if (is_string($path)) {
 
-                return (bool) file_put_contents($path, json_encode($newfile, JSON_PRETTY_PRINT)) . " : Success";
+                $dataWeight = file_put_contents("tmp/data.json", json_encode($array[count($array) - 1], JSON_PRETTY_PRINT));
+                $return["fileWeight"] = file_put_contents($path, json_encode($newfile, JSON_PRETTY_PRINT));
+                $return["dataWeight"] = $dataWeight;
+                $return["LineInserted"] = count($array[count($array) - 1]);
+                return $return;
 
             }
 
