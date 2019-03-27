@@ -74,7 +74,7 @@
                             $a = 0;
                             foreach ($file as $key => $value) {
 
-                                if ($treatement[8] == "AND") {
+                                if (isset($treatement[8]) && $treatement[8] == "AND") {
 
                                     if($this->queryTester($treatement[7], $value[$treatement[5]], $treatement[6]) && $this->queryTester($treatement[11], $value[$treatement[9]], $treatement[10])){
 
@@ -82,7 +82,7 @@
 
                                     }
 
-                                } elseif ($treatement[8] == "OR") {
+                                } elseif (isset($treatement[8]) && $treatement[8] == "OR") {
 
                                     if($this->queryTester($treatement[7], $value[$treatement[5]], $treatement[6]) || $this->queryTester($treatement[11], $value[$treatement[9]], $treatement[10])){
 

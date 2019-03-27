@@ -332,7 +332,7 @@
                     // private key testing
                     if ($search != array( )) {
                         // Database searching
-                        if ($get["max"]) {
+                        if (isset($get["max"])) {
                             $max = $get["max"];
                         } else {
                             $max = null;
@@ -345,7 +345,7 @@
                     }
                     
                     $result["trace"]["action"] = $get['action'];
-                    $result["trace"]["uuid"] = $get['uuid'];
+                    $result["trace"]["uuid"] = $get['prkey'];
 
                 }
 
