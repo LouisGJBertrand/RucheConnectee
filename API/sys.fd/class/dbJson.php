@@ -74,79 +74,33 @@
                             $a = 0;
                             foreach ($file as $key => $value) {
 
-                                if(is_null($max)){
+                                if ($treatement[8] == "AND") {
 
-                                    if ($treatement[8] == "AND") {
+                                    if($this->queryTester($treatement[7], $value[$treatement[5]], $treatement[6]) && $this->queryTester($treatement[11], $value[$treatement[9]], $treatement[10])){
 
-                                        if($this->queryTester($value[$treatement[5]], $treatement[7], $treatement[6]) && $this->queryTester($treatement[11], $value[$treatement[9]], $treatement[10])){
+                                        $result[] = $value;
 
-                                            $result[] = $value;
-
-                                        }
-
-                                    } elseif ($treatement[6] == "OR") {
-
-                                        if($this->queryTester($value[$treatement[5]], $treatement[7], $treatement[6]) || $this->queryTester($value[$treatement[9]], $treatement[11], $treatement[10])){
-
-                                            $result[] = $value;
-
-                                        }
-
-                                    } else {
-
-                                        if($this->queryTester($value[$treatement[5]], $treatement[7], $treatement[6])){
-
-                                            $result[] = $value;
-
-                                        }
                                     }
 
-                                } elseif($a < $max) {
+                                } elseif ($treatement[8] == "OR") {
 
-                                    if ($treatement[8] == "AND") {
+                                    if($this->queryTester($treatement[7], $value[$treatement[5]], $treatement[6]) || $this->queryTester($treatement[11], $value[$treatement[9]], $treatement[10])){
 
-                                        if($this->queryTester($value[$treatement[5]], $treatement[7], $treatement[6]) && $this->queryTester($treatement[11], $value[$treatement[9]], $treatement[10])){
+                                        $result[] = $value;
 
-                                            $result[] = $value;
-
-                                        }
-
-                                    } elseif ($treatement[6] == "OR") {
-
-                                        if($this->queryTester($value[$treatement[5]], $treatement[7], $treatement[6]) || $this->queryTester($value[$treatement[9]], $treatement[11], $treatement[10])){
-
-                                            $result[] = $value;
-
-                                        }
-
-                                    } else {
-
-                                        if($this->queryTester($value[$treatement[5]], $treatement[7], $treatement[6])){
-
-                                            $result[] = $value;
-
-                                        }
                                     }
-                                    $a++;
+
+                                } else {
+
+                                    if($this->queryTester($treatement[7], $value[$treatement[5]], $treatement[6])){
+
+                                        $result[] = $value;
+
+                                    }
                                 }
                             }
 
                             return $result;
-
-                        } elseif ($treatement[4] == "MAX"){
-
-                            $a = 0;
-                            foreach($file as $key => $value){
-
-                                if ($a < $max) {
-                                    
-                                    $return[] = $value;
-                                    $a ++;
-
-                                }
-
-                            }
-                            return $return;
 
                         } elseif (!isset($treatement[4])){
 

@@ -203,11 +203,141 @@
                     if ($search != array( )) {
                         // Database searching
                         if ($get["max"]) {
-                            $suffix = " MAX ".$get["max"];
+                            $max = $get["max"];
                         } else {
-                            $suffix = "";
+                            $max = null;
                         }
-                        $search = $dbJson->execute("SELECT * from Weight_Database".$suffix);
+                        $search = $dbJson->execute("SELECT * from Weight_Database WHERE uuid p= ".$get['prkey']);
+                        $result["value"] = $search;
+                    } else {
+                        // return a FATAL ERROR
+                        $result["value"] = "FATAL ERROR: NO KEY FOUND WITH ".$get['prkey'];
+                    }
+                    
+                    $result["trace"]["action"] = $get['action'];
+                    $result["trace"]["uuid"] = $get['uuid'];
+
+                }
+
+            } 
+            //  [USAGE]
+            //  <action> => "registerDataWeight" & <prkey> => %prkey% & <data> => %data%
+            //  regis = new apiKey to register
+            //  access Level = access Level for the key, base value = 0x1457
+            elseif ($get['action'] == "registerDataTemperature") {
+
+                if (isset($get['prkey']) && isset($get["data"])) {
+
+                    $search = array( );
+                    $access = 0x1457;
+                    // private key searching
+                    $search = $dbJson->execute("SELECT * from Api_Keys WHERE type == ".$access." AND key p= ".$get['prkey']);
+
+                    // private key testing
+                    if ($search != array( )) {
+                        // Database Writing
+                        $get["data"] = str_replace(" ", "_", $get["data"]);
+                        $get["data"] = str_replace(",", ";", $get["data"]);
+                        $search = $dbJson->execute("INSERT INTO Temperature_Database (id,date,uuid,value) VALUES (NULL,".$dateCtl->dateSimplifier().",".password_hash($get['prkey'], PASSWORD_DEFAULT).",".$get["data"].")");
+                        $result["value"] = $search;
+                    } else {
+                        // return a FATAL ERROR
+                        $result["value"] = "FATAL ERROR: NO KEY FOUND WITH ".$get['prkey'];
+                    }
+                    
+                    $result["trace"]["action"] = $get['action'];
+                    $result["trace"]["uuid"] = $get['uuid'];
+
+                }
+
+            }
+            //  [USAGE]
+            //  <action> => "getDataWeight" & <prkey> => %prkey% & <max> => %max|null%
+            //  access Level = access Level for the key, base value = 0x1457
+            elseif ($get['action'] == "getDataTemperature") {
+
+                if (isset($get['prkey'])) {
+
+                    $search = array( );
+                    $access = 0x1457;
+                    // private key searching
+                    $search = $dbJson->execute("SELECT * from Api_Keys WHERE type == ".$access." AND key p= ".$get['prkey']);
+
+                    // private key testing
+                    if ($search != array( )) {
+                        // Database searching
+                        if ($get["max"]) {
+                            $max = $get["max"];
+                        } else {
+                            $max = null;
+                        }
+                        $search = $dbJson->execute("SELECT * from Temperature_Database WHERE uuid p= ".$get['prkey']);
+                        $result["value"] = $search;
+                    } else {
+                        // return a FATAL ERROR
+                        $result["value"] = "FATAL ERROR: NO KEY FOUND WITH ".$get['prkey'];
+                    }
+                    
+                    $result["trace"]["action"] = $get['action'];
+                    $result["trace"]["uuid"] = $get['uuid'];
+
+                }
+
+            } 
+            //  [USAGE]
+            //  <action> => "registerDataWeight" & <prkey> => %prkey% & <data> => %data%
+            //  regis = new apiKey to register
+            //  access Level = access Level for the key, base value = 0x1457
+            elseif ($get['action'] == "registerDataGPS") {
+
+                if (isset($get['prkey']) && isset($get["lat"]) && isset($get["lon"])) {
+
+                    $search = array( );
+                    $access = 0x1457;
+                    // private key searching
+                    $search = $dbJson->execute("SELECT * from Api_Keys WHERE type == ".$access." AND key p= ".$get['prkey']);
+
+                    // private key testing
+                    if ($search != array( )) {
+                        // Database Writing
+                        $get["data"] = str_replace(" ", "_", $get["lat"]);
+                        $get["data"] = str_replace(",", ";", $get["lat"]);
+                        $get["data"] = str_replace(" ", "_", $get["lon"]);
+                        $get["data"] = str_replace(",", ";", $get["lon"]);
+                        $search = $dbJson->execute("INSERT INTO Gps_Database (id,date,uuid,Lat,Lon) VALUES (NULL,".$dateCtl->dateSimplifier().",".password_hash($get['prkey'], PASSWORD_DEFAULT).",".$get["lat"].",".$get["lon"].")");
+                        $result["value"] = $search;
+                    } else {
+                        // return a FATAL ERROR
+                        $result["value"] = "FATAL ERROR: NO KEY FOUND WITH ".$get['prkey'];
+                    }
+                    
+                    $result["trace"]["action"] = $get['action'];
+                    $result["trace"]["uuid"] = $get['uuid'];
+
+                }
+
+            }
+            //  [USAGE]
+            //  <action> => "getDataWeight" & <prkey> => %prkey% & <max> => %max|null%
+            //  access Level = access Level for the key, base value = 0x1457
+            elseif ($get['action'] == "getDataGPS") {
+
+                if (isset($get['prkey'])) {
+
+                    $search = array( );
+                    $access = 0x1457;
+                    // private key searching
+                    $search = $dbJson->execute("SELECT * from Api_Keys WHERE type == ".$access." AND key p= ".$get['prkey']);
+
+                    // private key testing
+                    if ($search != array( )) {
+                        // Database searching
+                        if ($get["max"]) {
+                            $max = $get["max"];
+                        } else {
+                            $max = null;
+                        }
+                        $search = $dbJson->execute("SELECT * from Gps_Database WHERE uuid p= ".$get['prkey']);
                         $result["value"] = $search;
                     } else {
                         // return a FATAL ERROR

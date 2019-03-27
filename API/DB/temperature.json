@@ -1,7 +1,7 @@
 {
     "settings": {
         "method": "JSONDataBase",
-        "fileName": "Weight_Database",
+        "fileName": "Temperature_Database",
         "creator": "Louis Bertrand",
         "standarsMethod": "PY-0001-JSONDataBase",
         "MysqlCompatible": true,
@@ -13,7 +13,7 @@
             "uuid",
             "value"
         ],
-        "lastUpdated": "2019-03-27T14:48:34+00:00"
+        "lastUpdated": "2019-03-27T14:48:48+00:00"
     },
     "datas": [
         {
@@ -24,14 +24,8 @@
         },
         {
             "id": 1,
-            "date": "1553697600",
-            "uuid": "$2y$10$9sZ24MaRgQGCQoxlnRfJ5OmXQypYurSI6Ta.qJFZu8AvtbI0dMGuu",
-            "value": "520"
-        },
-        {
-            "id": 2,
             "date": "1553698080",
-            "uuid": "$2y$10$Iw0EFZu2Mv6qw6P7Bt0JpOi\/1BxBMB.pPbQQDrEOpPw3XWNC8SRGS",
+            "uuid": "$2y$10$JURfic3sp\/9hRBupzNAmRu\/xuZ0AKRmQ60Vipov.Ax.iEZhXstmOa",
             "value": "520"
         }
     ]

@@ -1,0 +1,21 @@
+{
+    "settings": {
+        "method": "JSONDataBase",
+        "fileName": "Gps_Database",
+        "creator": "Louis Bertrand",
+        "standarsMethod": "PY-0001-JSONDataBase",
+        "MysqlCompatible": true,
+        "encoding": "UTF-8",
+        "isoEncoding": "ISO\/CEI 10646",
+        "header": [
+            "id",
+            "date",
+            "uuid",
+            "Lat",
+            "Lon"
+        ],
+        "lastUpdated": "2019-03-27T14:49:32+00:00"
+    },
+    "datas": [
+    ]
+}
