@@ -6,7 +6,7 @@
     }
     session_start();
 
-    $apiUrl = "http://rucheconnapi.free.fr/API/";
+    $apiUrl = "http://rucheconnapi.free.fr/API";
     if (!$_SESSION["CONN_Uuid"] && !$_SESSION["CONN_Upassword"]) {
 
         $nullarray = array();
@@ -17,13 +17,14 @@
             $get["password"] = sha1($_POST["password"]);
 
 
-            $apiRequest = "$apiUrl/?action=userTestConnection&uuid=%uuid%&pass=%password%";
+            $apiRequest = "$apiUrl/?action=userTestConnection&uuid=%uuid%&password=%password%";
             $apiRequest = str_replace("%uuid%", $get["uuid"], $apiRequest);
             $apiRequest = str_replace("%password%", $get["password"], $apiRequest);
+            // echo $apiRequest;
             $apiResponse = json_decode(file_get_contents($apiRequest), true);
             // var_dump($apiResponse); 
 
-            if ($apiResponse["value"] == true) {
+            if ($apiResponse["value"] == true || $apiResponse["value"] == "true") {
 
                 $_SESSION["CONN_Uuid"] = $get["uuid"];
                 $_SESSION["CONN_Upassword"] = $get["password"];

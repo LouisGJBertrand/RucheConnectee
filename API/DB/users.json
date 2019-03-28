@@ -19,10 +19,13 @@
     "datas": [
         {
             "id": 0,
-            "uIdTag": "5ad34a45215e35afb109c54d196bd742",
+            "uIdTag": "98c6aeb0bb4ddf14fcc0a5e05e8a7358",
             "uIdentifier": "Louis Bertrand",
-            "password": "$2y$10$afoNw5Gmi4ZSWwj1s6sU3OomKtszqwRhfsihPQHU.9CEMcrzdl\/5y",
-            "access": 65535
+            "password": "$2y$10$wcUKVcjEDUZcZ9lgeX05IuyNPxT5JsQ.Kf.GlVjNWRUznwEsu.blK",
+            "access": 65535,
+            "beehives": [
+                "699d0dd2eb6b939f21f41b3bbf8c5d093fddcc99"
+            ]
         }
     ]
 }

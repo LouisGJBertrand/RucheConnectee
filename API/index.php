@@ -66,16 +66,14 @@
             //  <action> => "userTestConnection" & <uuid> => %uuid% & <pass> => %password%
             elseif ($get['action'] == "userTestConnection") {
 
-                if (isset($get['uuid']) && isset($get["pass"])) {
+                if (isset($get['uuid']) && isset($get["password"])) {
 
-                    $search = $dbJson->execute("SELECT * from Users_Database WHERE uIdTag == ".$get['uuid']." AND password p= ".$get['pass']);
+                    $search = $dbJson->execute("SELECT * from Users_Database WHERE uIdTag == ".$get['uuid']." AND password p= ".$get['password']);
                     $file = $dbJson->get("DB/users.json");
 
-                    if (password_verify($get["pass"], $search[0]["password"])) {
+                    if (password_verify($get["password"], $search[0]["password"])) {
 
                         $result["value"] = true;
-                        $file[$search[0]["id"]]["password"] = password_hash($get["pass"], PASSWORD_BCRYPT);
-                        $dbJson->updateFile($file, "DB/users.json");
 
                     } else {
 
