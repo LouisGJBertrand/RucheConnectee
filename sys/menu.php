@@ -13,27 +13,37 @@
 
     if ($_SESSION["CONN_Uuid"] && $_SESSION["CONN_Upassword"]) {
 
+        // TEST DE CONNECTION
+        // PREPARATION DE LA REQUÊTE
         $get["uuid"] = $_SESSION["CONN_Uuid"];
         $get["password"] = $_SESSION["CONN_Upassword"];
-
 
         $apiRequest = "$apiUrl/?action=userTestConnection&uuid=%uuid%&password=%password%";
         $apiRequest = str_replace("%uuid%", $get["uuid"], $apiRequest);
         $apiRequest = str_replace("%password%", $get["password"], $apiRequest);
+
+        // ENVOIE DE LA REQUÊTE
         $apiResponse = json_decode(file_get_contents($apiRequest), true);
         // var_dump($apiResponse); 
 
         if ($apiResponse["value"] == true) {
 
+            // RECUPERATION DES DONNEES UTILISATEUR
+            // PREPARATION DE LA REQUÊTE
             $apiRequest = "$apiUrl/?action=getUserInfos&uuid=%uuid%&password=%password%";
             $apiRequest = str_replace("%uuid%", $get["uuid"], $apiRequest);
             $apiRequest = str_replace("%password%", $get["password"], $apiRequest);
+            
+            // ENVOIE DE LA REQUÊTE
             $apiResponse = json_decode(file_get_contents($apiRequest), true);
 
-            echo "<pre>";
-            echo "<a href=\"logout.php\"><i>déconexion</i></a>\n";
-            echo "Bonjour <i>".$apiResponse["value"]["uIdentifier"]."</i>\n";
-            echo "</pre>";
+            echo "<header class=\"topBar_Header\">\r\n";
+            echo "<a href=\"logout.php\"><i>déconexion</i></a>\r\n";
+            echo "</header>";
+
+            echo "<div class=\"contrainer\">\r\n";
+            echo "<h1>Bonjour <i>".$apiResponse["value"]["uIdentifier"]."</i>.</h1>\r\n";
+            echo "</div>";
 
         } else {
             redirect("login.php");

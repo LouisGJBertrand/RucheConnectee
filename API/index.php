@@ -63,6 +63,30 @@
 
             }
             //  [USAGE]
+            //  <action> => "getUserInfos" & <uuid> => %uuid%
+            elseif ($get['action'] == "listUserBeeHives") {
+
+                if (isset($get['uuid']) && isset($get['prkey'])) {
+
+                    
+                    $search = array( );
+                    $access = 9029;
+                    // private key searching
+                    $search = $dbJson->execute("SELECT * from Api_Keys WHERE type == ".$access." AND key p= ".$get['prkey']);
+
+                    // private key testing
+                    if ($search != array( )) {
+                    
+                        $search = $dbJson->execute("SELECT * from Users_Database WHERE uIdTag == ".$get['uuid']);
+                        $result["value"]["id"] = $search[0]["beehives"];
+                        $result["trace"]["action"] = $get['action'];
+                        $result["trace"]["uuid"] = $get['uuid'];
+
+                    }
+                }
+
+            }
+            //  [USAGE]
             //  <action> => "userTestConnection" & <uuid> => %uuid% & <pass> => %password%
             elseif ($get['action'] == "userTestConnection") {
 
