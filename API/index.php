@@ -68,7 +68,6 @@
 
                 if (isset($get['uuid']) && isset($get['prkey'])) {
 
-                    
                     $search = array( );
                     $access = 9029;
                     // private key searching

@@ -51,27 +51,46 @@
             $apiRequest = "$apiUrl?action=listUserBeeHives&uuid=%uuid%&prkey=%password%";
             $apiRequest = str_replace("%uuid%", $get["uuid"], $apiRequest);
             $apiRequest = str_replace("%password%", "1c52d5c2f1bb27eaabf306701212b1a28cf79dcc", $apiRequest);
-            echo $apiRequest;
-
 
             // ENVOIE DE LA REQUÊTE
             $apiResponse = json_decode(file_get_contents($apiRequest), true);
-            print_r($apiResponse);
 
-            foreach ($apiResponse["value"] as $key => $value) {
+            // echo "<pre>";
 
-                // RECUPERATION DES RUCHES DE UTILISATEUR
+            // print_r($apiRequest);
+
+            // die();
+            foreach ($apiResponse["value"]["id"] as $key => $value) {
+
+                // RECUPERATION DES DONNEES RUCHE (POIDS)
                 // PREPARATION DE LA REQUÊTE
-                $apiRequest = "$apiUrl/?action=getDataWeight&uuid=%uuid%&prkey=%password%";
-                $apiRequest = str_replace("%uuid%", $get["uuid"], $apiRequest);
-                $apiRequest = str_replace("%password%", "699d0dd2eb6b939f21f41b3bbf8c5d093fddcc99", $apiRequest);
+                $apiRequest = "$apiUrl/?action=getDataWeight&prkey=%password%";
+                $apiRequest = str_replace("%password%", $value, $apiRequest);
 
                 // ENVOIE DE LA REQUÊTE
-                $apiResponse = json_decode(file_get_contents($apiRequest), true);
+                $apiResponsebis = json_decode(file_get_contents($apiRequest), true);
+
+                ksort($apiResponsebis["value"]);
+
+                // RECUPERATION DES DONNEES RUCHE (POIDS)
+                // PREPARATION DE LA REQUÊTE
+                $apiRequest = "$apiUrl/?action=getDataGPS&prkey=%password%";
+                $apiRequest = str_replace("%password%", $value, $apiRequest);
+
+                // ENVOIE DE LA REQUÊTE
+                $apiResponseter = json_decode(file_get_contents($apiRequest), true);
+
+                ksort($apiResponseter["value"]);
+
+                echo "<pre>";
+
+                print_r($apiRequest);
+
+                die();
 
                 echo "<div class=\"HalfSizePannel\">\r\n";
-                print_r($apiResponse);
-                echo "<h1 class=\"numberShowcase\">".$apiResponse["value"][count($search)]["value"]."</h1>\r\n";
+                echo "<h1 class=\"numberShowcase\">".$apiResponsebis["value"][0]["value"]."</h1>\r\n";
+                echo "<span class=\"geographicCoords\">lat ".$apiResponseter["value"][0]["lat"]."; lon ".$apiResponseter["value"][0]["lon"]."</span>\r\n";
                 echo "</div>\r\n";
                 echo "</div>\r\n";
 
