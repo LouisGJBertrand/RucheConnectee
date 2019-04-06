@@ -13,13 +13,13 @@
             "uuid",
             "value"
         ],
-        "lastUpdated": "2019-03-27T14:48:34+00:00"
+        "lastUpdated": "2019-04-06T18:38:34+00:00"
     },
     "datas": [
         {
             "id": 0,
             "date": "1553165880",
-            "uuid": "$2y$10$gSr2zEFRB1TMXqDbhROlyO3SdcEEIp9NSggzqRUEf\/rSAUI6zmi7O",
+            "uuid": "$2y$10$k8hIJ3bFyjbqCus2/cm0fOMCHVYfrHNWp1QQWb/08wtTxbGk6TaA.",
             "value": "520"
         },
         {
@@ -33,6 +33,12 @@
             "date": "1553698080",
             "uuid": "$2y$10$Iw0EFZu2Mv6qw6P7Bt0JpOi\/1BxBMB.pPbQQDrEOpPw3XWNC8SRGS",
             "value": "520"
+        },
+        {
+            "id": 3,
+            "date": "1554575880",
+            "uuid": "$2y$10$SdtTxjnhCeHSzGMsnV72teAncArTs6buTTj\/ZUTHT0pxCBUeZMksK",
+            "value": "test"
         }
     ]
 }

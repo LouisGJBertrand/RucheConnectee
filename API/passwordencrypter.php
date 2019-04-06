@@ -15,7 +15,7 @@
     $pass = "TST00_000_A001";
     $pass = sha1($pass);
     echo $pass."\r\n";
-    // b2f8b98c04e5d02ace9ff62726e857e720398c93
+    // 699d0dd2eb6b939f21f41b3bbf8c5d093fddcc99
     echo password_hash($pass, PASSWORD_BCRYPT)."\r\n";
     echo hexdec(1457);
 
