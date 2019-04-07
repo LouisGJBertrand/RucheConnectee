@@ -37,6 +37,13 @@
             "uuid": "$2y$10$51Bq\/5Ao0Q0fVUzigoivsudq.SyCQPe5o5fJgAeuS8kM7pH2KAj2y",
             "Lat": 2,
             "Lon": 2
+        },
+        {
+            "id": 1,
+            "date": "1553700360",
+            "uuid": "$2y$10$k8hIJ3bFyjbqCus2/cm0fOMCHVYfrHNWp1QQWb/08wtTxbGk6TaA.",
+            "Lat": 48.876534,
+            "Lon": 2.475478
         }
     ]
 }
