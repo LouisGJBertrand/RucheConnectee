@@ -101,7 +101,7 @@
 
                 echo "<span class=\"geographicCoords\">lon ".$lon."; lat ".$lat."</span><br>\r\n";
                 echo "<a href=\"https://www.google.com/maps/@$lat,$lon,16z\"><img src=\"https://static-maps.yandex.ru/1.x/?lang=en-US&ll=".$lon.",".$lat."&z=15&l=map&size=210,100&pt=".$lon.",".$lat.",vkgrm\" \></a><br>";
-                echo "<button class=\"whiteButton disabled\">show more</button>";
+                echo "<button class=\"whiteButton disabled\">Afficher plus</button>";
                 echo "</div>\r\n";
                 echo "</div>\r\n";
 
