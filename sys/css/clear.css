@@ -1,0 +1,91 @@
+
+@import url('https://fonts.googleapis.com/css?family=Crimson+Text|Quicksand');
+
+*{
+
+    font-family: 'Quicksand', sans-serif;
+
+}
+
+body{
+
+    margin: 0px;
+    padding: 0px;
+
+}
+
+.topBar_Header{
+
+    padding: 25px;
+    background: #fff;
+    border-bottom: 1px solid #ddd;
+
+}
+
+div.contrainer{
+
+    margin-left: auto;
+    margin-right: auto;
+    width: calc(100% - 50px);
+    max-width: 1024px;
+
+}
+
+.FullSizePannel{
+
+    width: calc(100% - 50px);
+
+    border: 1px solid #ddd;
+    border-radius:15px;
+
+    padding-left: 25px;
+    padding-right: 25px;
+    margin-top: 15px;
+
+    display: block;
+    -webkit-box-shadow: 0px 0px 75px -27px rgba(0,0,0,0.10);
+    -moz-box-shadow: 0px 0px 75px -27px rgba(0,0,0,0.10);
+    box-shadow: 0px 0px 75px -27px rgba(0,0,0,0.10);
+
+}
+
+.showcasePanel{
+
+    width: 210px;
+    height: 300px;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius:15px;
+
+    display: inline-block;
+    margin-top: 15px;
+    padding-left: 25px;
+    padding-right: 25px;
+    -webkit-box-shadow: 0px 0px 75px -27px rgba(0,0,0,0.10);
+    -moz-box-shadow: 0px 0px 75px -27px rgba(0,0,0,0.10);
+    box-shadow: 0px 0px 75px -27px rgba(0,0,0,0.10);
+
+}
+
+.numberShowcase{
+
+    font-size: 2.7em;
+    text-align: center;
+    font-family: 'Crimson Text', serif;
+
+    font-style: normal;
+    font-weight: 100;
+
+}
+
+.whiteButton{
+
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius:10px;
+    width: 100%;
+    max-width: 210px;
+    padding: 5px;
+    margin-top: 15px;
+
+}

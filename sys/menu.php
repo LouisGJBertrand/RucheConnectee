@@ -37,8 +37,17 @@
             // ENVOIE DE LA REQUÊTE
             $apiResponse = json_decode(file_get_contents($apiRequest), true);
 
+            if ($_SESSION["style"] == "dark") {
+                $style = "dark";
+            } else {
+                $style = "dark";
+            }
+
+            echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"css/$style.css\">";
+            echo "<meta name=\"viewport\" content=\"initial-scale=1, maximum-scale=1\">";
+
             echo "<header class=\"topBar_Header\">\r\n";
-            echo "<a href=\"logout.php\"><i>déconexion</i></a>\r\n";
+            echo "<a href=\"logout.php\"><i>déconnexion</i></a>\r\n";
             echo "</header>";
 
             echo "<div class=\"contrainer\">\r\n";
@@ -70,8 +79,6 @@
                 // ENVOIE DE LA REQUÊTE
                 $apiResponsebis = json_decode(file_get_contents($apiRequest), true);
 
-                ksort($apiResponsebis["value"]);
-
                 // RECUPERATION DES DONNEES RUCHE (POIDS)
                 // PREPARATION DE LA REQUÊTE
                 $apiRequest = "$apiUrl/?action=getDataGPS&prkey=%password%";
@@ -80,17 +87,21 @@
                 // ENVOIE DE LA REQUÊTE
                 $apiResponseter = json_decode(file_get_contents($apiRequest), true);
 
-                ksort($apiResponseter["value"]);
+                // echo "<pre>";
 
-                echo "<pre>";
+                // print_r(count($apiResponseter));
 
-                print_r($apiRequest);
+                // die();
 
-                die();
+                echo "<div class=\"showcasePanel\">\r\n";
+                echo "<h1 class=\"numberShowcase\">".$apiResponsebis["value"][count($apiResponsebis) - 1]["value"]." Kg</h1>\r\n";
 
-                echo "<div class=\"HalfSizePannel\">\r\n";
-                echo "<h1 class=\"numberShowcase\">".$apiResponsebis["value"][0]["value"]."</h1>\r\n";
-                echo "<span class=\"geographicCoords\">lat ".$apiResponseter["value"][0]["lat"]."; lon ".$apiResponseter["value"][0]["lon"]."</span>\r\n";
+                $lat = $apiResponseter["value"][count($apiResponseter["value"]) - 1]["Lat"];
+                $lon = $apiResponseter["value"][count($apiResponseter["value"]) - 1]["Lon"];
+
+                echo "<span class=\"geographicCoords\">lon ".$lon."; lat ".$lat."</span><br>\r\n";
+                echo "<a href=\"https://www.google.com/maps/@$lat,$lon,16z\"><img src=\"https://static-maps.yandex.ru/1.x/?lang=en-US&ll=".$lon.",".$lat."&z=15&l=map&size=210,100&pt=".$lon.",".$lat.",vkgrm\" \></a><br>";
+                echo "<button class=\"whiteButton disabled\">show more</button>";
                 echo "</div>\r\n";
                 echo "</div>\r\n";
 
