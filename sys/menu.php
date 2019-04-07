@@ -40,7 +40,7 @@
             if ($_SESSION["style"] == "dark") {
                 $style = "dark";
             } else {
-                $style = "dark";
+                $style = "clear";
             }
 
             echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"css/$style.css\">";
@@ -101,11 +101,18 @@
 
                 echo "<span class=\"geographicCoords\">lon ".$lon."; lat ".$lat."</span><br>\r\n";
                 echo "<a href=\"https://www.google.com/maps/@$lat,$lon,16z\" target=\"_blank\"><img src=\"https://static-maps.yandex.ru/1.x/?lang=en-US&ll=".$lon.",".$lat."&z=15&l=map&size=210,100&pt=".$lon.",".$lat.",vkgrm\" \></a><br>";
-                echo "<button class=\"whiteButton disabled\">Afficher plus</button>";
-                echo "</div>\r\n";
+                echo "<button class=\"whiteButton disabled\">Selec. cette ruche</button>";
                 echo "</div>\r\n";
 
             }
+            echo "<div class=\"showcasePanelBlue\">\r\n";
+            echo "<h2>Connected Behive</h2>\r\n";
+
+            echo "<span>Interface Homme Machine</span>\r\n";
+            echo "<span>par Louis Bertrand</span>\r\n";
+
+            echo "</div>\r\n";
+            echo "</div>\r\n";
 
         } else {
             redirect("login.php");

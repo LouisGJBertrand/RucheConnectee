@@ -1,9 +1,17 @@
 
-@import url('https://fonts.googleapis.com/css?family=Crimson+Text|Quicksand');
+@import url('https://fonts.googleapis.com/css?family=Poppins');
 
 *{
 
-    font-family: 'Quicksand', sans-serif;
+    font-family: 'Poppins',sans-serif;
+    font-weight: 200;
+
+}
+
+a{
+
+    color: inherit;
+    text-decoration: none;
 
 }
 
@@ -11,14 +19,19 @@ body{
 
     margin: 0px;
     padding: 0px;
+    background: #1e1e2f;
 
 }
 
 .topBar_Header{
 
     padding: 25px;
-    background: #fff;
-    border-bottom: 1px solid #ddd;
+    padding-left: 75px;
+    padding-right: 75px;
+    margin-left: auto;
+    margin-right: auto;
+    border-top: 2px solid rgb(0, 89, 255);
+    color: #fff;
 
 }
 
@@ -31,16 +44,23 @@ div.contrainer{
 
 }
 
+h1{
+
+    margin:0px;
+    font-style: normal;
+    font-weight: 100;
+
+}
+
 .FullSizePannel{
 
-    width: calc(100% - 50px);
+    background: #27293d;
+    border-radius: 5px;
+    color: #fff;
 
-    border: 1px solid #ddd;
-    border-radius:15px;
-
-    padding-left: 25px;
-    padding-right: 25px;
+    padding: 25px;
     margin-top: 15px;
+    background: #27293d;
 
     display: block;
     -webkit-box-shadow: 0px 0px 75px -27px rgba(0,0,0,0.10);
@@ -51,11 +71,13 @@ div.contrainer{
 
 .showcasePanel{
 
-    width: 210px;
-    height: 300px;
+    vertical-align: top;
+
     text-align: center;
-    border: 1px solid #ddd;
-    border-radius:15px;
+    border-radius:5px;
+    background: #27293d;
+
+    color: #fff;
 
     display: inline-block;
     margin-top: 15px;
@@ -67,25 +89,126 @@ div.contrainer{
 
 }
 
+.showcasePanelBlue{
+
+    vertical-align: top;
+
+    text-align: center;
+    border-radius:5px;
+    background: #008ee0;
+
+    color: #fff;
+
+    display: inline-block;
+    margin-top: 15px;
+    padding-left: 25px;
+    padding-right: 25px;
+    -webkit-box-shadow: 0px 0px 75px -27px rgba(0,0,0,0.10);
+    -moz-box-shadow: 0px 0px 75px -27px rgba(0,0,0,0.10);
+    box-shadow: 0px 0px 75px -27px rgba(0,0,0,0.10);
+
+}
+
+@media screen and (min-width: 1080px) {
+
+    .FullSizePannel{
+    
+        width: calc(100% - 50px);
+    
+    }
+
+    .showcasePanel{
+    
+        width: calc(33% - 49.5px);
+        height: 300px;
+    
+    }
+
+    .showcasePanelBlue{
+    
+        width: calc(33% - 49.5px);
+        height: 300px;
+    
+    }
+}
+
+@media screen and (min-width: 641px) and (max-width: 1080px) {
+
+    .FullSizePannel{
+
+        width: calc(100% - 50px);
+
+    }
+
+    .showcasePanel{
+
+        width: calc(50% - 58px);
+        height: 300px;
+
+    }
+
+    .showcasePanelBlue{
+
+        width: calc(50% - 58px);
+        height: 300px;
+    
+    }
+
+    .showcasePanel:nth-child(even){
+
+        margin-right: 10px;
+
+    }
+}
+
+@media screen and (max-width: 640px) {
+
+    .FullSizePannel{
+
+        width: calc(100% - 50px);
+
+    }
+
+    .showcasePanel{
+
+        width: calc(100% - 50px);
+        height: 300px;
+
+    }
+
+    .showcasePanelBlue{
+
+        width: calc(100% - 50px);
+        height: 300px;
+
+    }
+}
+
 .numberShowcase{
 
     font-size: 2.7em;
     text-align: center;
-    font-family: 'Crimson Text', serif;
-
-    font-style: normal;
-    font-weight: 100;
+    margin-top: 15px;
+    margin-bottom: 15px;
 
 }
 
 .whiteButton{
 
-    background: #fff;
+    background: transparent;
     border: 1px solid #ddd;
     border-radius:10px;
     width: 100%;
     max-width: 210px;
     padding: 5px;
     margin-top: 15px;
+    color: #fff;
+
+}
+
+span{
+
+    font-size: 0.9em;
+    color: #ddd;
 
 }
