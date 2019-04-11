@@ -114,7 +114,7 @@
             echo "<div class=\"showcasePanelBlue\">\r\n";
             echo "<h2>Connected Behive</h2>\r\n";
 
-            echo "<span>Interface Homme Machine</span>\r\n";
+            echo "<span>Interface Homme Machine</span><br>\r\n";
             echo "<span>par Louis Bertrand</span>\r\n";
 
             echo "</div>\r\n";
