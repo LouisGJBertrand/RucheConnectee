@@ -94,7 +94,8 @@
                 // die();
 
                 echo "<div class=\"showcasePanel\">\r\n";
-                echo "<h1 class=\"numberShowcase\">".$apiResponsebis["value"][count($apiResponsebis) - 1]["value"]." Kg</h1>\r\n";
+                echo "<h1 class=\"numberShowcase\">".$apiResponsebis["value"][count($apiResponsebis["value"]) - 1]["value"]." Kg</h1>\r\n";
+                // 
 
                 $lat = $apiResponseter["value"][count($apiResponseter["value"]) - 1]["Lat"];
                 $lon = $apiResponseter["value"][count($apiResponseter["value"]) - 1]["Lon"];
