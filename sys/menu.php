@@ -55,6 +55,11 @@
             echo "<h1>Bonjour <i>".$apiResponse["value"]["uIdentifier"]."</i>.</h1>\r\n";
             echo "</div>\r\n";
 
+            $ctx = stream_context_create(array('http'=>
+                array(
+                    'timeout' => 1200,  //1200 Seconds is 20 Minutes
+                )
+            ));
             // RECUPERATION DES RUCHES DE UTILISATEUR
             // PREPARATION DE LA REQUÊTE
             $apiRequest = "$apiUrl?action=listUserBeeHives&uuid=%uuid%&prkey=%password%";
@@ -62,7 +67,7 @@
             $apiRequest = str_replace("%password%", "1c52d5c2f1bb27eaabf306701212b1a28cf79dcc", $apiRequest);
 
             // ENVOIE DE LA REQUÊTE
-            $apiResponse = json_decode(file_get_contents($apiRequest), true);
+            $apiResponse = json_decode(file_get_contents($apiRequest, false, $ctx), true);
 
             // echo "<pre>";
 
@@ -77,7 +82,7 @@
                 $apiRequest = str_replace("%password%", $value, $apiRequest);
 
                 // ENVOIE DE LA REQUÊTE
-                $apiResponsebis = json_decode(file_get_contents($apiRequest), true);
+                $apiResponsebis = json_decode(file_get_contents($apiRequest, false, $ctx), true);
 
                 // RECUPERATION DES DONNEES RUCHE (POIDS)
                 // PREPARATION DE LA REQUÊTE
@@ -85,7 +90,7 @@
                 $apiRequest = str_replace("%password%", $value, $apiRequest);
 
                 // ENVOIE DE LA REQUÊTE
-                $apiResponseter = json_decode(file_get_contents($apiRequest), true);
+                $apiResponseter = json_decode(file_get_contents($apiRequest, false, $ctx), true);
 
                 // echo "<pre>";
 
