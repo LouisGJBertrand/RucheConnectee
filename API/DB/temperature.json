@@ -13,7 +13,7 @@
             "uuid",
             "value"
         ],
-        "lastUpdated": "2019-03-27T14:48:48+00:00"
+        "lastUpdated": "2019-04-17T16:30:40+02:00"
     },
     "datas": [
         {
@@ -27,6 +27,186 @@
             "date": "1553698080",
             "uuid": "$2y$10$JURfic3sp\/9hRBupzNAmRu\/xuZ0AKRmQ60Vipov.Ax.iEZhXstmOa",
             "value": "520"
+        },
+        {
+            "id": 2,
+            "date": "1554984480",
+            "uuid": "$2y$10$qLUZO0ZBtV7wSdAid\/yvAuZKmqH2hLb9qFown2t4.qS3uca\/zkLa.",
+            "value": "24.00"
+        },
+        {
+            "id": 3,
+            "date": "1554984480",
+            "uuid": "$2y$10$JOai7smflRwAbWggzYsC9uCekfYpJgikdSzlki2hal0ZZMfyIszW.",
+            "value": "23.00"
+        },
+        {
+            "id": 4,
+            "date": "1554984480",
+            "uuid": "$2y$10$97GwaaS7kopze.iR46zwdOyaXahLOtHEM7\/pP4THvhWgyV6hOxV9m",
+            "value": "22.00"
+        },
+        {
+            "id": 5,
+            "date": "1554984480",
+            "uuid": "$2y$10$mdtpWcdoFtaYXTEZi72rieN3p9f6e75HC3.KvoWE6OLSAwNvxqZNe",
+            "value": "23.00"
+        },
+        {
+            "id": 6,
+            "date": "1554984480",
+            "uuid": "$2y$10$Bath.tUBjrs03UF0iRVYquV2RNqdJOKBENP2JTgNciFr9AFBkBtwC",
+            "value": "24.00"
+        },
+        {
+            "id": 7,
+            "date": "1554984480",
+            "uuid": "$2y$10$N5kQ9KF7q2ufBwp4OQfN\/O0D71aiNmlEwHid20bTbBz4As4DeAYFy",
+            "value": "20.00"
+        },
+        {
+            "id": 8,
+            "date": "1554984480",
+            "uuid": "$2y$10$JNRNRc7w5rGAtfHB31f6NOwIG515QSCxmbVYYE\/qwVX\/yBS2Tsf12",
+            "value": "22.00"
+        },
+        {
+            "id": 9,
+            "date": "1554984480",
+            "uuid": "$2y$10$Ov6W4pzeH4VYtfcjRfgzzu9mnVd9e5XlavK4YfiNoAxpbDFODoN96",
+            "value": "23.00"
+        },
+        {
+            "id": 10,
+            "date": "1554984480",
+            "uuid": "$2y$10$.b1HE5vw77Cen5YO763rHOxqFboNXXRZPR\/ek686brUTmWXn6YeRi",
+            "value": "24.00"
+        },
+        {
+            "id": 11,
+            "date": "1554984480",
+            "uuid": "$2y$10$NHXY\/BgiUF6DRBqViBxRTu8pJJ0PRnA9bnr3xiXT4mwk1FE7ApPvW",
+            "value": "22.00"
+        },
+        {
+            "id": 12,
+            "date": "1554984480",
+            "uuid": "$2y$10$tRctaPZXIiufnbT8jwoBKuPTlZdmQYp.ZyNEVal4YN05U5fFlZHyC",
+            "value": "24.00"
+        },
+        {
+            "id": 13,
+            "date": "1554984480",
+            "uuid": "$2y$10$Arefwsl6yGa4JE\/WzLOMoeM15zHVs6aAC7bhQBo2G.rLn..Y91arS",
+            "value": "22.00"
+        },
+        {
+            "id": 14,
+            "date": "1554984480",
+            "uuid": "$2y$10$NzNhIp60t94hb1ux5umph.w1ljXECEX31uMQSYvCO4YGW1fGT1Q8a",
+            "value": "23.00"
+        },
+        {
+            "id": 15,
+            "date": "1554984480",
+            "uuid": "$2y$10$ej57z4ru7oNz8eoNfMYNU.rgi\/Sn\/SdUo6JXBTXq7xDtvz\/M.R3W.",
+            "value": "23.00"
+        },
+        {
+            "id": 16,
+            "date": "1554984660",
+            "uuid": "$2y$10$Kiq9Mbqp9b78A9qo1lB\/qeeAQKcKPSWrDUzc7DsUc1hBZ2BgmpspC",
+            "value": "24.00"
+        },
+        {
+            "id": 17,
+            "date": "1554984660",
+            "uuid": "$2y$10$oux8kWYKisXRqF40HHozk.qo55I3w9KTYaxzCUIEutS2SZspc4fom",
+            "value": "23.00"
+        },
+        {
+            "id": 18,
+            "date": "1554984660",
+            "uuid": "$2y$10$eJwsT60v5VVgH9x\/ob7w\/O0bBcJDiomzlDFM8wmGq4LoBt4njBSI.",
+            "value": "22.00"
+        },
+        {
+            "id": 19,
+            "date": "1554984660",
+            "uuid": "$2y$10$gOGk67lmuNBkC9hOOAYXtO\/F0tGYVFY3j3hEsiTLf3JLBcC3gIVW.",
+            "value": "23.00"
+        },
+        {
+            "id": 20,
+            "date": "1554984660",
+            "uuid": "$2y$10$LDCbZnMl7v0avZJ1\/CX35.4T9nwoC0RPR42zwpBMgXijd1MeRwRoe",
+            "value": "24.00"
+        },
+        {
+            "id": 21,
+            "date": "1554984660",
+            "uuid": "$2y$10$EnVnFhlThdXuhCyUn\/bRaOAmH3tyApDiUapGAUXf3oxxAK89E5LCe",
+            "value": "20.00"
+        },
+        {
+            "id": 22,
+            "date": "1554984660",
+            "uuid": "$2y$10$KTM4oZEf83yxzwk0KM7q8OBxfbQvFgHBX0N9upVUzmgAZHgDav0wm",
+            "value": "22.00"
+        },
+        {
+            "id": 23,
+            "date": "1554984660",
+            "uuid": "$2y$10$oocKW8PDo90FPIVfnjgFQu195DIPtjEj7ervLdSmZopVb8aZc49uq",
+            "value": "23.00"
+        },
+        {
+            "id": 24,
+            "date": "1554984660",
+            "uuid": "$2y$10$Lthy3mR2zI6\/\/J3VXVeAY.d0ilM.gW3.1LatxqEVtkcNMqPELPiPu",
+            "value": "24.00"
+        },
+        {
+            "id": 25,
+            "date": "1554984660",
+            "uuid": "$2y$10$OeiNoYpqwU9H0aNuSRYVdO8h8sLmUFx.Nm9ki2ndzmIpkFlmuo7LK",
+            "value": "22.00"
+        },
+        {
+            "id": 26,
+            "date": "1554984660",
+            "uuid": "$2y$10$IHc7p7X5j15RE.CSpqJ7fOVcCQVdrdHIaiDe8xkZox\/ksdue\/uPSS",
+            "value": "24.00"
+        },
+        {
+            "id": 27,
+            "date": "1554984660",
+            "uuid": "$2y$10$dLMGFMQzvGDk0yDZq77aAurinzbSLvUYjyN4e8HzgZpgxUobXM1jm",
+            "value": "22.00"
+        },
+        {
+            "id": 28,
+            "date": "1554984660",
+            "uuid": "$2y$10$3PIBZuTmbARCo2dsv.v29OYaZ8zi8KQeux06maj\/FfFajLGC0NXfW",
+            "value": "23.00"
+        },
+        {
+            "id": 29,
+            "date": "1554984660",
+            "uuid": "$2y$10$anK7UXRZUwyQfF3lv6ZrEORKAJ8VXX\/YtFVRWvMkhyqmKfEzM.W8i",
+            "value": "23.00"
+        },
+        {
+            "id": 30,
+            "date": "1554984660",
+            "uuid": "$2y$10$aClmfeMyDCpPzPY8vscY7eLARPZ7qZMbZdZjFvMsIR4NgZvBN0z6W",
+            "value": "20.00"
+        },
+        {
+            "id": 31,
+            "date": "1555518600",
+            "uuid": "$2y$10$VdKf8qGWuhi.y6ag5vgc5ONvvrIJKVSwr5orr4fYEamX\/uwdGJ\/Rm",
+            "value": "24.00"
         }
     ]
 }

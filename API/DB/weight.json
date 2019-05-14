@@ -13,13 +13,13 @@
             "uuid",
             "value"
         ],
-        "lastUpdated": "2019-04-06T18:38:34+00:00"
+        "lastUpdated": "2019-04-17T16:30:44+02:00"
     },
     "datas": [
         {
             "id": 0,
             "date": "1553165880",
-            "uuid": "$2y$10$k8hIJ3bFyjbqCus2/cm0fOMCHVYfrHNWp1QQWb/08wtTxbGk6TaA.",
+            "uuid": "$2y$10$k8hIJ3bFyjbqCus2\/cm0fOMCHVYfrHNWp1QQWb\/08wtTxbGk6TaA.",
             "value": "520"
         },
         {
@@ -39,6 +39,114 @@
             "date": "1554575880",
             "uuid": "$2y$10$SdtTxjnhCeHSzGMsnV72teAncArTs6buTTj\/ZUTHT0pxCBUeZMksK",
             "value": "24"
+        },
+        {
+            "id": 4,
+            "date": "1554979380",
+            "uuid": "$2y$10$thIBgoqcaz9hprQ\/C8OEt.F4VU\/0pMEv4Xlx09TZKF65jVUUyJL2W",
+            "value": "12.00"
+        },
+        {
+            "id": 5,
+            "date": "1554979800",
+            "uuid": "$2y$10$tNLzRyVNdQ.\/8cHuG4ORUu8PWlMpG7VRejUxbIqG6pic1Qkny2u9e",
+            "value": "12.00"
+        },
+        {
+            "id": 6,
+            "date": "1554980460",
+            "uuid": "$2y$10$3CFdZGmjIB73DNWTjhTrdOsno6MEYsAAHQaw3dzSdkhQDXf.JPBJy",
+            "value": "12.00"
+        },
+        {
+            "id": 7,
+            "date": "1554981000",
+            "uuid": "$2y$10$ZVx.uaTCdMA\/A2.NIWdJd.6yMHgvZgnM3BtL39XhwPzFnhaFICM6i",
+            "value": "13.00"
+        },
+        {
+            "id": 8,
+            "date": "1554981360",
+            "uuid": "$2y$10$myRI7ici5IlZstKf2iVSY.aduyGrQMTDu.DgM\/UpDFOFlXQ6q.Gsu",
+            "value": "14.00"
+        },
+        {
+            "id": 9,
+            "date": "1554986880",
+            "uuid": "$2y$10$UfTv2UJbpqXOtJyehiB4ueFGeRQDqXxMpoxVjKD9rQgIXKqql.2vm",
+            "value": "24.00"
+        },
+        {
+            "id": 10,
+            "date": "1554986940",
+            "uuid": "$2y$10$uQHxpSCJ07ZKCUaz4bpZROUVNmAU\/jbY1XhGWxeCDNCnBjMWVUWg6",
+            "value": "23.00"
+        },
+        {
+            "id": 11,
+            "date": "1554987060",
+            "uuid": "$2y$10$D13XX\/fEYu4I7IbsFjdR3u\/j9NraEael\/0PxZDvyfSOjlFBvfOv5y",
+            "value": "24.77"
+        },
+        {
+            "id": 12,
+            "date": "1554987120",
+            "uuid": "$2y$10$\/y\/ITlADnIqRkTHiL5S\/yu4umjraeYBzCRk34BDK0GjxW1r6wzw6a",
+            "value": "23.85"
+        },
+        {
+            "id": 13,
+            "date": "1554987180",
+            "uuid": "$2y$10$Qf68pS5DgQjUPYFMYxEJiOBJKcN6Xc7ypxkDaL41jUzeF9ZNh27nC",
+            "value": "22.24"
+        },
+        {
+            "id": 14,
+            "date": "1554987240",
+            "uuid": "$2y$10$6QpEkTZz8sGhk20YHqRq7uPqrNOLSeeY51zt43pI3oYUpbspYMXXe",
+            "value": "23.53"
+        },
+        {
+            "id": 15,
+            "date": "1554987300",
+            "uuid": "$2y$10$L7jxSS8NKzwYzbhSySi9AOa1cEb25OQupjMHLqlZ7tkyOmbrWHaFa",
+            "value": "24.72"
+        },
+        {
+            "id": 16,
+            "date": "1554987360",
+            "uuid": "$2y$10$32W9zJSeJo\/PcAUOmp0oEeEx4SO45H16P5jMHugE6pgk98ag25t1q",
+            "value": "20.87"
+        },
+        {
+            "id": 17,
+            "date": "1554987420",
+            "uuid": "$2y$10$GZZk3MfKfJ3F6sU6YND1KuL7KwI1dkBYr\/gEqOQ6HK0rs3rt9JRqi",
+            "value": "22.63"
+        },
+        {
+            "id": 18,
+            "date": "1554987480",
+            "uuid": "$2y$10$KB867use3\/7wAiEFPVTQD.8HSCyObjWILKah4C8qnzzT261zQ.heK",
+            "value": "23.34"
+        },
+        {
+            "id": 19,
+            "date": "1554987540",
+            "uuid": "$2y$10$FLu3kNlpolD9Q67YbPVCQunv07IJIT0ElavU47uOekTC.iNkkjqtm",
+            "value": "24.97"
+        },
+        {
+            "id": 20,
+            "date": "1554987600",
+            "uuid": "$2y$10$rsUQxFE2DKPwmbNIvVmiJu1943QAaXHRXET1EuoTpg2DN4VIC0T7y",
+            "value": "22.06"
+        },
+        {
+            "id": 21,
+            "date": "1555518600",
+            "uuid": "$2y$10$977y5cMZA12z9xKo456Gb.WBBiEa4zWRvNcTEnBzWA.KDmwlZOWri",
+            "value": "23.85"
         }
     ]
 }
