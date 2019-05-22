@@ -76,7 +76,7 @@
             // die();
             foreach ($apiResponse["value"]["id"] as $key => $value) {
 
-                // RECUPERATION DES DONNEES RUCHE (POIDS)
+                // REQUETE DE RECUPERATION DES DONNEES RUCHE (POIDS)
                 // PREPARATION DE LA REQUÊTE
                 $apiRequest = "$apiUrl/?action=getDataWeight&prkey=%password%";
                 $apiRequest = str_replace("%password%", $value, $apiRequest);
@@ -84,7 +84,7 @@
                 // ENVOIE DE LA REQUÊTE
                 $apiResponsebis = json_decode(file_get_contents($apiRequest, false, $ctx), true);
 
-                // RECUPERATION DES DONNEES RUCHE (POIDS)
+                // REQUETE DE RECUPERATION DES DONNEES RUCHE (GPS)
                 // PREPARATION DE LA REQUÊTE
                 $apiRequest = "$apiUrl/?action=getDataGPS&prkey=%password%";
                 $apiRequest = str_replace("%password%", $value, $apiRequest);
