@@ -26,6 +26,16 @@
             "beehives": [
                 "699d0dd2eb6b939f21f41b3bbf8c5d093fddcc99"
             ]
+        },
+        {
+            "id": 1,
+            "uIdTag": "4b7d0e645c832e821b7939db39a4eb59",
+            "uIdentifier": "compte de teste",
+            "password": "$2y$10$EAArYMaS53bVo8xU6EOaNuBuvtbpeDqdsdTIhsAzJVGj4tUfvY1vS",
+            "access": 65535,
+            "beehives": [
+                "699d0dd2eb6b939f21f41b3bbf8c5d093fddcc99"
+            ]
         }
     ]
 }
